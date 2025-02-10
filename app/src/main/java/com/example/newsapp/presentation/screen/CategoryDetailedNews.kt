@@ -1,82 +1,122 @@
 package com.example.newsapp.presentation.screen
 
+import android.annotation.SuppressLint
 import android.webkit.WebView
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.runtime.Composable
+import android.webkit.WebViewClient
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import androidx.navigation.NavHostController
 import coil3.compose.AsyncImage
+import com.example.newsapp.R
 import com.example.newsapp.data.model.Article
-import com.example.newsapp.data.model.Source
 
-//@PreviewScreenSizes
-//@PreviewLightDark
-//@Preview(showBackground = true, showSystemUi = true)
-@OptIn(ExperimentalMaterial3Api::class)
+@SuppressLint("SetJavaScriptEnabled")
 @Composable
 fun CategoryDetailUI(
-    modifier: Modifier = Modifier,
-    article: Article = Article(
-        source = Source(
-            id = "nbc-news",
-            name = "NBC News"
-        ),
-        author = "Katherine Doyle, Raquel Coronell Uribe, Megan Lebowitz",
-        title = "Russell Vought, CFPB's new acting head, issues directives to halt portions of bureau activity - NBC News",
-        description = "Office of Management and Budget Director Russell Vought issued a series of directives to Consumer Financial Protection Bureau employees Saturday night in his new capacity a the bureau's acting head, effectively slowing a large portion of the bureau's activity…",
-        url = "https://www.nbcnews.com/politics/doge/russell-vought-consumer-financial-protection-bureau-trump-rcna191356",
-        urlToImage = "https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/rockcms/2025-02/250208-russell-vought-wm-335p-ad2715.jpg",
-        publishedAt = "2025-02-09T01:19:00Z",
-        content = "Office of Management and Budget Director Russell Vought issued a series of directives to Consumer Financial Protection Bureau employees Saturday night in his new capacity a the bureau's acting head, … [+4247 chars]"
-    ),
+    article: Article = Article(),
     navController: NavHostController
-){
+) {
+    val date = article.publishedAt?.substring(0, 10)
+    val time = article.publishedAt?.substring(11, 19)
+    var showWebView by remember { mutableStateOf(false) }
+    if (showWebView) {
+        // WebView to show full article
+        AndroidView(
+            modifier = Modifier.fillMaxSize(),
+            factory = { context ->
+                WebView(context).apply {
+                    settings.javaScriptEnabled = true
+                    webViewClient = object : WebViewClient() {}
+                    loadUrl(article.url ?: "https://www.google.com") // Default URL
+                }
+            }
+        )
+    } else {
+        // Article details view
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 20.dp)
+                .padding(horizontal = 9.dp),
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                fontWeight = FontWeight.SemiBold,
+                text = article.title ?: "No Title",
+                style = TextStyle(fontSize = 22.sp)
+            )
 
-    AndroidView(
-        modifier = Modifier.fillMaxSize(),
-        factory = { context ->
-            WebView(context).apply {
-                loadUrl(article.url.toString())
+            Spacer(modifier = Modifier.height(10.dp))
+
+            AsyncImage(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(250.dp)
+                    .clip(RoundedCornerShape(10.dp)),
+                contentScale = ContentScale.Crop,
+                model = article.urlToImage,
+                contentDescription = "News Image",
+                placeholder = painterResource(R.drawable.loading),
+            )
+
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Row(
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Text(
+                    text = "Published: ",
+                    fontWeight = FontWeight.SemiBold
+                )
+                Text(text = "$date  $time")
+            }
+//                Spacer(modifier = Modifier.height(2.dp))
+
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Text(text = "Source: ", fontWeight = FontWeight.SemiBold)
+                Text(text = article.source?.name ?: "Unknown")
+            }
+//                Spacer(modifier = Modifier.height(2.dp))
+
+            Row(modifier = Modifier.fillMaxWidth()) {
+                Text(text = "Author: ", fontWeight = FontWeight.SemiBold)
+                Text(text = article.author ?: "Unknown")
+            }
+            Spacer(modifier = Modifier.height(5.dp))
+
+            Text(
+                text = "Description: ",
+                fontWeight = FontWeight.SemiBold,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Text(
+                text = article.description ?: "No description available.",
+                fontSize = 16.sp
+            )
+
+            Spacer(modifier = Modifier.height(10.dp))
+
+            Button(
+                onClick = { showWebView = true },
+                colors = ButtonDefaults.buttonColors(containerColor = Color.Blue)
+            ) {
+                Text(text = "Read Full Article", color = Color.White)
             }
         }
-    )
-//    Scaffold (
-//        modifier = Modifier.fillMaxSize(),
-//        topBar = {
-//            TopAppBar(
-//                title = {
-//                    Text(text = "News App")
-//                }
-//            )
-//        }
-//    ){
-//        Column(
-//            modifier = Modifier.fillMaxWidth().padding(it),
-//            horizontalAlignment = Alignment.CenterHorizontally
-//        ) {
-//
-//            Text(
-//                text = article.title.toString(),
-//                style = TextStyle(
-//                    fontSize = 25.sp
-//                )
-//            )
-//            AsyncImage(
-//                model = article.urlToImage,
-//                contentDescription = null
-//            )
-//        }
-//    }
+    }
 }
