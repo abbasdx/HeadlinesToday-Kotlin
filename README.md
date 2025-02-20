@@ -22,7 +22,7 @@ A modern **news aggregator app** built using **Kotlin**, **Jetpack Compose**, an
 - **Room Database for offline mode (upcoming)**  
 
 ## 📸 Screenshots  
-(Soon...)  
+![App Screenshot](app/src/main/res/drawable/screenshots.jpg)
 
 ## 🔥 Future Enhancements  
 🔹 Implement **Room Database** for offline reading  
