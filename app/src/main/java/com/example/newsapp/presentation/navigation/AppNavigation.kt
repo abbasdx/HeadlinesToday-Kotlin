@@ -11,10 +11,8 @@ import com.example.newsapp.data.model.Source
 import com.example.newsapp.presentation.NewsAppViewModel
 import com.example.newsapp.presentation.navigation.routes.CategoryScreen
 import com.example.newsapp.presentation.navigation.routes.HomeScreen
-import com.example.newsapp.presentation.navigation.routes.SearchScreen
 import com.example.newsapp.presentation.screen.CategoryDetailUI
 import com.example.newsapp.presentation.screen.HomeScreenUI
-import com.example.newsapp.presentation.screen.SearchScreenUI
 
 
 @Composable
@@ -43,10 +41,6 @@ fun AppNavigation(modifier: Modifier = Modifier, viewModel: NewsAppViewModel) {
                 article = article,
                 navController = navController
             )
-        }
-        composable<SearchScreen> {
-            SearchScreenUI(navController = navController, viewModel = viewModel)
-
         }
     }
 }

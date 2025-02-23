@@ -17,6 +17,3 @@ data class CategoryScreen(
     val url: String? = null,
     val urlToImage: String? = null
 )
-
-@Serializable
-object SearchScreen
