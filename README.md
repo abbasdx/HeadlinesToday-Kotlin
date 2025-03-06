@@ -16,7 +16,6 @@ A modern **news aggregator app** built using **Kotlin**, **Jetpack Compose**, an
 - **NewsAPI key** for fetching news  
 
 ## 🛠️ Technologies Used  
-- **Kotlin Multiplatform (KMP)**  
 - **Jetpack Compose**  
 - **Retrofit for API calls**  
 - **Room Database for offline mode (upcoming)**  
