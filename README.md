@@ -23,14 +23,8 @@ A modern **news aggregator app** built using **Kotlin**, **Jetpack Compose**, an
 
 ## 📝 License  
 
-This project is licensed under the **MIT License**.  
-
-```
-MIT License © 2025 Abbas Ansari  
-
-Permission is granted to use, copy, modify, and distribute this software  
-with attribution. The software is provided "as is" without warranty.  
-```  
+Copyright © 2025 Abbas Ansari 
+All rights reserved.
 
 ---
 
