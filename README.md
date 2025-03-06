@@ -23,7 +23,8 @@ A modern **news aggregator app** built using **Kotlin**, **Jetpack Compose**, an
 
 ## 📝 License  
 
-Copyright © 2025 Abbas Ansari 
+Copyright © 2025 **Abbas Ansari** 
+
 All rights reserved.
 
 ---
