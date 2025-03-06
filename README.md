@@ -8,13 +8,6 @@ A modern **news aggregator app** built using **Kotlin**, **Jetpack Compose**, an
 ✔️ Dark mode support for better readability  
 ✔️ Supports offline reading with Room Database (upcoming)  
 
-## 🚀 Getting Started  
-
-### Prerequisites  
-- Android Studio (latest version)  
-- Kotlin and Jetpack Compose support enabled  
-- **NewsAPI key** for fetching news  
-
 ## 🛠️ Technologies Used  
 - **Jetpack Compose**  
 - **Retrofit for API calls**  
