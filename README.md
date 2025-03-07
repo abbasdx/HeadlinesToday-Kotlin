@@ -8,15 +8,7 @@ A modern **news aggregator app** built using **Kotlin**, **Jetpack Compose**, an
 ✔️ Dark mode support for better readability  
 ✔️ Supports offline reading with Room Database (upcoming)  
 
-## 🚀 Getting Started  
-
-### Prerequisites  
-- Android Studio (latest version)  
-- Kotlin and Jetpack Compose support enabled  
-- **NewsAPI key** for fetching news  
-
 ## 🛠️ Technologies Used  
-- **Kotlin Multiplatform (KMP)**  
 - **Jetpack Compose**  
 - **Retrofit for API calls**  
 - **Room Database for offline mode (upcoming)**  
@@ -31,14 +23,9 @@ A modern **news aggregator app** built using **Kotlin**, **Jetpack Compose**, an
 
 ## 📝 License  
 
-This project is licensed under the **MIT License**.  
+Copyright © 2025 **Abbas Ansari** 
 
-```
-MIT License © 2025 Abbas Ansari  
-
-Permission is granted to use, copy, modify, and distribute this software  
-with attribution. The software is provided "as is" without warranty.  
-```  
+All rights reserved.
 
 ---
 
