@@ -21,7 +21,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -101,14 +100,20 @@ fun HomeScreenUI(
         Column(
             modifier = Modifier.fillMaxSize()
         ) {
-            Row (
-                modifier = Modifier.fillMaxWidth().height(70.dp).padding(0.dp),
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(70.dp)
+                    .padding(0.dp),
                 verticalAlignment = Alignment.CenterVertically
-            ){
+            ) {
                 Image(
                     painter = painterResource(id = R.drawable.logoht),
                     contentDescription = "logo",
-                    modifier = Modifier.size(110.dp).fillMaxWidth().padding(start = 9.dp)
+                    modifier = Modifier
+                        .size(110.dp)
+                        .fillMaxWidth()
+                        .padding(start = 9.dp)
                 )
                 OutlinedTextField(value = searchTerm.value,
                     singleLine = true,
@@ -223,7 +228,6 @@ fun HomeScreenUI(
         }
     }
 }
-
 @Composable
 fun LottieLoadingAnimation() {
     val composition by rememberLottieComposition(LottieCompositionSpec.RawRes(R.raw.loading_animation))
@@ -232,5 +236,10 @@ fun LottieLoadingAnimation() {
         composition = composition,
         progress = { progress },
         modifier = Modifier.size(300.dp) // Adjust size as needed
+    )
+    Image(
+        painter = painterResource(id = R.drawable.developer),
+        contentDescription = "",
+        modifier = Modifier.padding(top = 300.dp)
     )
 }

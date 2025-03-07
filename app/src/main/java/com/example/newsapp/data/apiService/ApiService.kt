@@ -8,12 +8,12 @@ interface ApiService {
     @GET("top-headlines")
     suspend fun getHeadlines(
         @Query("country") country: String = "us",
-        @Query("apiKey") apiKey: String = "YOUR_API_KEY"
+        @Query("apiKey") apiKey: String = "API_KEY"
     ): ApiResponse
 
     @GET("everything")
     suspend fun getEverything(
         @Query("q") q: String = "us",
-        @Query("apiKey") apiKey: String = "YOUR_API_KEY"
+        @Query("apiKey") apiKey: String = "API_KEY"
     ): ApiResponse
 }

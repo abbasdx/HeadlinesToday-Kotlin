@@ -4,4 +4,5 @@
     <style name="Theme.NewsApp" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:windowSplashScreenBackground">#343434</item>
     </style>
+
 </resources>
